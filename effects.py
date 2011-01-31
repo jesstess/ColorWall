@@ -104,8 +104,7 @@ class Twinkle(Effect):
             # Stick to blueish colors.
             hue = .65 + random.uniform(-1, 1) * .1
             value = random.random()
-            saturation = random.random()
-            hsv = (hue, saturation, value)
+            hsv = (hue, 1, value)
             self.wall.set_pixel(x, y, hsv)
             self.wall.draw()
             time.sleep(.01)
