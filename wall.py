@@ -18,6 +18,8 @@ Interface:
 set_pixel(): Set the HSV values for the pixel at x-offset x and y-offset y. 0,0
 is the upper-left corner.
 
+get_pixel(): Get the HSV values for the pixel at x-offset x and y-offset y.
+
 draw(): Re-draw every pixel on the wall based on the pixel's HSV tuple.
 
 clear(): Set every pixel on the wall to black (HSV (0, 0, 0)). This does not
@@ -52,6 +54,9 @@ class Wall(object):
 
     def set_pixel(self, x, y, hsv):
         self.pixels[self.width * y + x] = hsv
+
+    def get_pixel(self, x, y):
+        return self.pixels[self.width * y + x]
 
     def draw(self):
         self.canvas.delete(ALL)
