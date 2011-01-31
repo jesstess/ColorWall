@@ -1,0 +1,37 @@
+ColorWall
+---------
+
+ColorWall is a minimal implementation of the visualizer part of the allegro
+project (https://github.com/vishnubob/allegro).
+
+ColorWall is a simple framework for implementing and displaying effects for a
+wall of pixels. To add a new effect, create a class in effects.py inheriting
+from Effect and implement the run() method. Add the new effect to the Effects
+list at the bottom of the file. ColorWall comes with a few example effects.
+
+Watch an example ColorWall at http://vimeo.com/16522975.
+
+ColorWall's pixels speak HSV (http://en.wikipedia.org/wiki/HSL_and_HSV).
+
+
+Dependencies
+------------
+
+Tkinter, a GUI-programming toolkit for Python: http://wiki.python.org/moin/TkInter
+
+To see if you have Tkinter installed, at a Python prompt run:
+
+>>> import Tkinter
+
+
+Usage
+-----
+
+To run the ColorWall:
+
+python run.py
+
+This will run your effects on the default 8x8 pixel wall. To change the width
+and height of the wall, pass the -w and -t options, e.g.:
+
+python run.py -w 5 -t 10
