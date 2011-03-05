@@ -76,6 +76,18 @@ class Rainbow(Effect):
                 hsv = (hue, 1, 1)
                 self.wall.set_pixel(i, j, hsv)
                 hue += hue_spacing
+                # on python 2.5, having a hue value of > 1 will return None
+                # when you try to convert HSV to RGB using colorsys
+                #
+                # in later versions, colorsys will treat a hue value of
+                # > 1 as *just the truncated fractional part*, e.g.
+                # 1.29 becomes 0.29.
+                #
+                # neither of these particularly make sense, but let's
+                # emulate the behaviour of python 2.6+ here for compatibility's
+                # sake.
+                if hue > 1:
+                    hue -= int(hue)
             time.sleep(delay)
             self.wall.draw()
 
