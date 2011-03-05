@@ -390,6 +390,32 @@ class Bouncer(Effect):
             self.wall.draw()
             time.sleep(.1)
 
+class Message(Effect):
+    message = [
+        '                                                                      ',
+        '     **  * * *** * *  ** *  *    *  **     **  **  ** *   * *         ',
+        '     * * * *  *  * * * * ** *    * *      *   * * * * *   * *         ',
+        '     **   *   *  *** * * * **    *  *     *   * * * * *   * *         ',
+        '     *    *   *  * * * * *  *    *   *    *   * * * * *               ',
+        '     *    *   *  * * **  *  *    * **      ** **  **  *** * *         ',
+        ]
+
+    def run(self):
+        col = 0
+        start_time = time.time()
+        while time.time() - start_time < 10:
+            self.wall.clear()
+            for x in range(self.wall.width):
+                for y in range(self.wall.height):
+                    if y >= len(self.message):
+                        break
+                    dot = self.message[y][(x+col) % len(self.message[0])]
+                    if dot != ' ':
+                        self.wall.set_pixel(x, y, (.333, 1, 1))
+            self.wall.draw()
+            col += 1
+            time.sleep(0.07)
+
 Effects = [HueTest, SaturationTest, ValueTest, DictionaryTest, LetterTest,
            Checkerboards, Columns, Rainbow, Twinkle, KnightMoves, Matrix,
-           Bouncer]
+           Bouncer, Message]
