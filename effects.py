@@ -336,5 +336,60 @@ class LetterTest(Effect):
             self.wall.draw()
             time.sleep(.1)
 
+class Bouncer(Effect):
+    class Ball(object):
+        def __init__(self, wall):
+            self.wall = wall
+            self.x = random.randint(0, self.wall.width - 1)
+            self.y = random.randint(0, self.wall.height - 1)
+            self.hue = random.random()
+            self.dx = self.dy = 0
+            while self.dx == 0 and self.dy == 0:
+                self.dx = random.choice([-1, 0, 1])
+                self.dy = random.choice([-1, 0, 1])
+            self.tail = []
+            self.tail_len = 4
+
+        def draw(self):
+            self.wall.set_pixel(self.x, self.y, (self.hue, 1, 1))
+            value = 0.6
+            val_step = float(value/(self.tail_len+1))
+            for x, y in self.tail:
+                value -= val_step
+                self.wall.set_pixel(x, y, (self.hue, 1, value))
+
+        def advance(self):
+            self.tail = [(self.x, self.y)] + self.tail[:self.tail_len-1]
+            self.x += self.dx
+            if self.x < 0:
+                self.x = 1
+                self.dx = -self.dx
+            elif self.x >= self.wall.width:
+                self.x = self.wall.width - 2
+                self.dx = -self.dx
+
+            self.y += self.dy
+            if self.y < 0:
+                self.y = 1
+                self.dy = -self.dy
+            elif self.y >= self.wall.height:
+                self.y = self.wall.height - 2
+                self.dy = -self.dy
+
+    def run(self):
+        balls = []
+        for i in range(3):
+            balls.append(self.Ball(self.wall))
+
+        start_time = time.time()
+        while time.time() - start_time < 5:
+            self.wall.clear()
+            for ball in balls:
+                ball.draw()
+                ball.advance()
+            self.wall.draw()
+            time.sleep(.1)
+
 Effects = [HueTest, SaturationTest, ValueTest, DictionaryTest, LetterTest,
-           Checkerboards, Columns, Rainbow, Twinkle, KnightMoves, Matrix]
+           Checkerboards, Columns, Rainbow, Twinkle, KnightMoves, Matrix,
+           Bouncer]
