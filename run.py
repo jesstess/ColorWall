@@ -3,7 +3,7 @@
 import optparse, sys
 
 from wall import Wall
-from effects import Effects
+import effects
 
 """
 """
@@ -20,7 +20,12 @@ if __name__ == "__main__":
 
     wall = Wall(opts.width, opts.height)
 
-    for effect in Effects:
+    if args:
+        effects_to_run = [getattr(effects, a) for a in args]
+    else:
+        effects_to_run = effects.Effects
+
+    for effect in effects_to_run:
         new_effect = effect(wall)
         print new_effect.__class__.__name__
         new_effect.run()
