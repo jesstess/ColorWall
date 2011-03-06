@@ -153,6 +153,73 @@ class Twinkle(Effect):
             self.wall.draw()
             time.sleep(.01)
 
+class KnightMoves(Effect):
+    def __init__(self, wall):
+        self.wall = wall
+        self.wall.clear()
+        for x in range(self.wall.width):
+            for y in range(self.wall.height):
+                if (x + y) % 2 == 0:
+                    self.wall.set_pixel(x, y, colors["black"])
+                else:
+                    self.wall.set_pixel(x, y, colors["white"])
+        # Pick a random starting location for the knight
+        self.knight_x = random.randint(0, self.wall.width - 1)
+        self.knight_y = random.randint(0, self.wall.height - 1) 
+        self.wall.set_pixel(self.knight_x, self.knight_y, colors["red"])
+    def run(self):
+        self.wall.draw()
+        start_time = time.time()
+        while time.time() - start_time < 12:
+            self.move()
+            self.wall.draw()
+            time.sleep(0.75)
+    def move(self):
+        """
+        Move the knight.
+        """
+        if (self.knight_x + self.knight_y) % 2 == 0:
+            self.wall.set_pixel(self.knight_x, self.knight_y, \
+              colors["black"])
+        else:
+            self.wall.set_pixel(self.knight_x, self.knight_y, \
+              colors["white"])
+        moves = self.getMoves()
+        # Select a move at random from the possible moves
+        (self.knight_x, self.knight_y) = moves[random.randint(0, len(moves)\
+          - 1)]
+        self.wall.set_pixel(self.knight_x, self.knight_y, colors["red"])
+    def getMoves(self):
+        """
+        Get all possible moves that the knight can make.
+        """
+        moves = []
+        # Don't want knight to wrap around the board because you can't 
+        # do that in chess
+        if (self.knight_x - 2) >= 0 and (self.knight_y - 1) >= 0:
+            moves.append((self.knight_x - 2, self.knight_y - 1))
+        if (self.knight_x - 1) >= 0 and (self.knight_y - 2) >= 0:
+            moves.append((self.knight_x - 1, self.knight_y - 2))
+        if (self.knight_x - 2) >= 0 and \
+          (self.knight_y + 1) < self.wall.height:
+            moves.append((self.knight_x - 2, self.knight_y + 1))
+        if (self.knight_x + 1) < self.wall.width and \
+          (self.knight_y - 2) >= 0:
+            moves.append((self.knight_x + 1, self.knight_y - 2))
+        if (self.knight_x - 1) >= 0 and \
+          (self.knight_y + 2) < self.wall.height:
+            moves.append((self.knight_x - 1, self.knight_y + 2))
+        if (self.knight_x + 2) < self.wall.width and \
+          (self.knight_y - 1) >= 0:
+            moves.append((self.knight_x + 2, self.knight_y - 1))
+        if (self.knight_x + 2) < self.wall.width and \
+          (self.knight_y + 1) < self.wall.height:
+            moves.append((self.knight_x + 2, self.knight_y + 1))
+        if (self.knight_x + 1) < self.wall.width and \
+          (self.knight_y + 2) < self.wall.height:
+            moves.append((self.knight_x + 1, self.knight_y + 2))
+        return moves
+
 class Matrix(Effect):
     class Column(object):
         def __init__(self, wall):
@@ -236,4 +303,4 @@ class Matrix(Effect):
                 timeout -= 1
             drawing = 0
 
-Effects = [HueTest, SaturationTest, ValueTest, DictionaryTest, Checkerboards, Columns, Rainbow, Twinkle, Matrix]
+Effects = [HueTest, SaturationTest, ValueTest, DictionaryTest, Checkerboards, Columns, Rainbow, Twinkle, KnightMoves, Matrix]
