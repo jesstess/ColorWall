@@ -3,14 +3,14 @@ import time
 import ascii8x8
 
 # A dictionary of hsv values for some common colors.
-colors = {"black":(0, 0, 0), "white":(0, 0, 1), "gray":(0, 0, 0.5), \
-          "red":(0, 1, 1), "blue":(0.66, 1, 1), "yellow":(0.16, 1, 1), \
-          "purple":(0.85, 1, 0.5), "green":(0.33, 1, 0.5), \
-          "orange":(0.083, 1, 1), "pink":(0.9, 1, 1), "lime":(0.33, 1, 1), \
-          "baby blue":(0.66, 0.5, 1), "cyan":(0.5, 1, 1), \
-          "brown":(0.07, 0.86, 0.54), "beige":(0.083, 0.32, 1), \
-          "indigo":(0.75, 1, 0.5), "dark gray":(0, 0, 0.15), \
-          "light gray":(0, 0, 0.75), "maroon":(0, 1, 0.5), \
+colors = {"black":(0, 0, 0), "white":(0, 0, 1), "gray":(0, 0, 0.5),
+          "red":(0, 1, 1), "blue":(0.66, 1, 1), "yellow":(0.16, 1, 1),
+          "purple":(0.85, 1, 0.5), "green":(0.33, 1, 0.5),
+          "orange":(0.083, 1, 1), "pink":(0.9, 1, 1), "lime":(0.33, 1, 1),
+          "baby blue":(0.66, 0.5, 1), "cyan":(0.5, 1, 1),
+          "brown":(0.07, 0.86, 0.54), "beige":(0.083, 0.32, 1),
+          "indigo":(0.75, 1, 0.5), "dark gray":(0, 0, 0.15),
+          "light gray":(0, 0, 0.75), "maroon":(0, 1, 0.5),
           "navy":(0.66, 1, 0.25)}
 
 class Effect(object):
@@ -166,8 +166,9 @@ class KnightMoves(Effect):
                     self.wall.set_pixel(x, y, colors["white"])
         # Pick a random starting location for the knight
         self.knight_x = random.randint(0, self.wall.width - 1)
-        self.knight_y = random.randint(0, self.wall.height - 1) 
+        self.knight_y = random.randint(0, self.wall.height - 1)
         self.wall.set_pixel(self.knight_x, self.knight_y, colors["red"])
+
     def run(self):
         self.wall.draw()
         start_time = time.time()
@@ -175,43 +176,38 @@ class KnightMoves(Effect):
             self.move()
             self.wall.draw()
             time.sleep(0.75)
+
     def move(self):
         """
         Move the knight.
         """
         if (self.knight_x + self.knight_y) % 2 == 0:
-            self.wall.set_pixel(self.knight_x, self.knight_y, \
-              colors["black"])
+            self.wall.set_pixel(self.knight_x, self.knight_y, colors["black"])
         else:
-            self.wall.set_pixel(self.knight_x, self.knight_y, \
-              colors["white"])
+            self.wall.set_pixel(self.knight_x, self.knight_y, colors["white"])
         moves = self.getMoves()
         # Select a move at random from the possible moves
-        (self.knight_x, self.knight_y) = moves[random.randint(0, len(moves)\
-          - 1)]
+        self.knight_x, self.knight_y = moves[random.randint(0, len(moves) - 1)]
         self.wall.set_pixel(self.knight_x, self.knight_y, colors["red"])
+
     def getMoves(self):
         """
         Get all possible moves that the knight can make.
         """
         moves = []
-        # Don't want knight to wrap around the board because you can't 
+        # Don't want knight to wrap around the board because you can't
         # do that in chess
         if (self.knight_x - 2) >= 0 and (self.knight_y - 1) >= 0:
             moves.append((self.knight_x - 2, self.knight_y - 1))
         if (self.knight_x - 1) >= 0 and (self.knight_y - 2) >= 0:
             moves.append((self.knight_x - 1, self.knight_y - 2))
-        if (self.knight_x - 2) >= 0 and \
-          (self.knight_y + 1) < self.wall.height:
+        if (self.knight_x - 2) >= 0 and (self.knight_y + 1) < self.wall.height:
             moves.append((self.knight_x - 2, self.knight_y + 1))
-        if (self.knight_x + 1) < self.wall.width and \
-          (self.knight_y - 2) >= 0:
+        if (self.knight_x + 1) < self.wall.width and (self.knight_y - 2) >= 0:
             moves.append((self.knight_x + 1, self.knight_y - 2))
-        if (self.knight_x - 1) >= 0 and \
-          (self.knight_y + 2) < self.wall.height:
+        if (self.knight_x - 1) >= 0 and (self.knight_y + 2) < self.wall.height:
             moves.append((self.knight_x - 1, self.knight_y + 2))
-        if (self.knight_x + 2) < self.wall.width and \
-          (self.knight_y - 1) >= 0:
+        if (self.knight_x + 2) < self.wall.width and (self.knight_y - 1) >= 0:
             moves.append((self.knight_x + 2, self.knight_y - 1))
         if (self.knight_x + 2) < self.wall.width and \
           (self.knight_y + 1) < self.wall.height:
