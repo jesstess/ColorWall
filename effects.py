@@ -404,6 +404,9 @@ class Message(Effect):
         ]
 
     def run(self):
+        if self.wall.height < 6 or self.wall.width < 2:
+            return
+
         col = 0
         start_time = time.time()
         while time.time() - start_time < 10:
