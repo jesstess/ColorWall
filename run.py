@@ -21,7 +21,8 @@ if __name__ == "__main__":
     wall = Wall(opts.width, opts.height)
 
     if args:
-        effects_to_run = [getattr(effects, a) for a in args]
+        effects_to_run = [getattr(effects, a) for a in args \
+                              if hasattr(effects, a)]
     else:
         effects_to_run = effects.Effects
 
