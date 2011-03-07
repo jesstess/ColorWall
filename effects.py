@@ -377,6 +377,9 @@ class Bouncer(Effect):
                 self.dy = -self.dy
 
     def run(self):
+        if self.wall.width < 2 or self.wall.height < 2:
+            return
+
         balls = []
         for i in range(3):
             balls.append(self.Ball(self.wall))
