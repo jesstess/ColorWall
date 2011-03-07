@@ -170,6 +170,9 @@ class KnightMoves(Effect):
         self.wall.set_pixel(self.knight_x, self.knight_y, colors["red"])
 
     def run(self):
+        if self.wall.width < 2 or self.wall.height < 2:
+            return
+
         self.wall.draw()
         start_time = time.time()
         while time.time() - start_time < 12:
