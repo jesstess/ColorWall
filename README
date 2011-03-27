@@ -35,3 +35,7 @@ This will run your effects on the default 8x8 pixel wall. To change the width
 and height of the wall, pass the -w and -t options, e.g.:
 
 python run.py -w 5 -t 10
+
+To run only specific effects, pass the effect names on the commandline. e.g.:
+
+python run.py Rainbow Twinkle KnightMoves
