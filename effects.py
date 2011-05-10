@@ -21,6 +21,20 @@ class Effect(object):
     def run(self):
         pass
 
+class SolidColorTest(Effect):
+    def run(self):
+        hue = 1
+        saturation = 1
+        value = 1
+
+        hsv = (hue, saturation, value)
+        for x in range(self.wall.width):
+            for y in range(self.wall.height):
+                self.wall.set_pixel(x, y, hsv)
+
+        self.wall.draw()
+        time.sleep(2)
+
 class HueTest(Effect):
     def run(self):
         hue = random.random()
