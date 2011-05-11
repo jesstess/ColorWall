@@ -439,6 +439,6 @@ class Message(Effect):
             col += 1
             time.sleep(0.07)
 
-Effects = [HueTest, SaturationTest, ValueTest, DictionaryTest, LetterTest,
-           Checkerboards, Columns, Rainbow, Twinkle, KnightMoves, Matrix,
-           Bouncer, Message]
+Effects = [SolidColorTest, HueTest, SaturationTest, ValueTest, DictionaryTest,
+           LetterTest, Checkerboards, Columns, Rainbow, Twinkle, KnightMoves,
+           Matrix, Bouncer, Message]
