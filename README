@@ -36,6 +36,10 @@ and height of the wall, pass the -w and -t options, e.g.:
 
 python run.py -w 5 -t 10
 
-To run only specific effects, pass the effect names on the commandline. e.g.:
+To run advanced effects, pass the -a option, e.g.:
 
-python run.py Rainbow Twinkle KnightMoves
+python run.py -a
+
+To run only the advanced effects, pass the -a and -s options, e.g.:
+
+python run.py -a -s

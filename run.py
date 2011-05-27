@@ -12,14 +12,16 @@ if __name__ == "__main__":
     parser = optparse.OptionParser("""Usage: %prog [options]""")
     parser.add_option("-w", "--width", type="int",
                       action="store", dest="width",
-                      default=8, help="wall width")
+                      default=8, help="Sets the wall width.")
     parser.add_option("-t", "--height", type="int",
                       action="store", dest="height",
-                      default=8, help="wall height")
-    parser.add_option("-a", "--advanced", action="store_true", 
-                      dest="advanced")
-    parser.add_option("-s", "--skip-normal", action="store_true", 
-                      dest="skip_normal")
+                      default=8, help="Sets the wall height.")
+    parser.add_option("-a", "--advanced", action="store_true",
+                      dest="advanced",
+                      help="Runs the advanced effects.")
+    parser.add_option("-s", "--skip-normal", action="store_true",
+                      dest="skip_normal",
+                      help="Skips running normal effects.")
     (opts, args) = parser.parse_args(sys.argv[1:])
 
     wall = Wall(opts.width, opts.height)
@@ -51,8 +53,3 @@ if __name__ == "__main__":
             new_effect.run()
     else:
         print "***Skipping advanced effects***"
-
-"""
-
-"""
-
