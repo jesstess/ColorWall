@@ -91,7 +91,8 @@ def RainbowTest(wall):
     print "RainbowTest"
     wall.clear()
 
-    rainbow = [colors["red"], colors["orange"], colors["yellow"]]
+    rainbow = [colors["red"], colors["orange"], colors["yellow"],
+               colors["green"], colors["blue"], colors["purple"]]
     for color in rainbow:
         for x in range(wall.width):
             for y in range(wall.height):
