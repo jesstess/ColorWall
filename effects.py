@@ -34,15 +34,14 @@ def HueTest(wall):
     wall.clear()
 
     hue = 0
-    start_time = time.time()
-    while time.time() - start_time < 5:
+    while hue < 1:
         hsv = (hue, 1, 1)
         for x in range(wall.width):
             for y in range(wall.height):
                 wall.set_pixel(x, y, hsv)
         wall.draw()
-        hue = (hue + 1./7) % 1
-        time.sleep(.5)
+        hue = hue + .01
+        time.sleep(.05)
 
 def SaturationTest(wall):
     print "SaturationTest"
@@ -50,14 +49,13 @@ def SaturationTest(wall):
 
     hue = random.random()
     saturation = 0
-    start_time = time.time()
-    while time.time() - start_time < 5:
+    while saturation < 1:
         hsv = (hue, saturation, 1)
         for x in range(wall.width):
             for y in range(wall.height):
                 wall.set_pixel(x, y, hsv)
         wall.draw()
-        saturation = (saturation + .05) % 1
+        saturation = saturation + .01
         time.sleep(.05)
 
 def ValueTest(wall):
@@ -66,14 +64,13 @@ def ValueTest(wall):
 
     hue = random.random()
     value = 0
-    start_time = time.time()
-    while time.time() - start_time < 5:
+    while value < 1:
         hsv = (hue, 1, value)
         for x in range(wall.width):
             for y in range(wall.height):
                 wall.set_pixel(x, y, hsv)
         wall.draw()
-        value = (value + .05) % 1
+        value = value + .01
         time.sleep(.05)
 
 def DictionaryTest(wall):
@@ -98,7 +95,7 @@ def RainbowTest(wall):
             for y in range(wall.height):
                 wall.set_pixel(x, y, color)
         wall.draw()
-        time.sleep(1)
+        time.sleep(.5)
 
 def Checkerboards(wall):
     print "Checkerboards"
