@@ -31,11 +31,11 @@ if __name__ == "__main__":
     else:
         print "***Normal effects follow***"
         effects.SolidColorTest(wall)
+        effects.DictionaryTest(wall)
+        effects.RainbowTest(wall)
         effects.HueTest(wall)
         effects.SaturationTest(wall)
         effects.ValueTest(wall)
-        effects.DictionaryTest(wall)
-        effects.RainbowTest(wall)
         effects.Checkerboards(wall)
         effects.Columns(wall)
         effects.Rainbow(wall)

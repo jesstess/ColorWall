@@ -25,6 +25,30 @@ def SolidColorTest(wall):
     wall.draw()
     time.sleep(2)
 
+def DictionaryTest(wall):
+    print "DictionaryTest"
+    wall.clear()
+
+    for color in colors.keys():
+        for x in range(wall.width):
+            for y in range(wall.height):
+                wall.set_pixel(x, y, colors[color])
+        wall.draw()
+        time.sleep(0.5)
+
+def RainbowTest(wall):
+    print "RainbowTest"
+    wall.clear()
+
+    rainbow = [colors["red"], colors["orange"], colors["yellow"],
+               colors["green"], colors["blue"], colors["purple"]]
+    for color in rainbow:
+        for x in range(wall.width):
+            for y in range(wall.height):
+                wall.set_pixel(x, y, color)
+        wall.draw()
+        time.sleep(.5)
+
 def HueTest(wall):
     print "HueTest"
     wall.clear()
@@ -68,30 +92,6 @@ def ValueTest(wall):
         wall.draw()
         value = value + .01
         time.sleep(.05)
-
-def DictionaryTest(wall):
-    print "DictionaryTest"
-    wall.clear()
-
-    for color in colors.keys():
-        for x in range(wall.width):
-            for y in range(wall.height):
-                wall.set_pixel(x, y, colors[color])
-        wall.draw()
-        time.sleep(0.5)
-
-def RainbowTest(wall):
-    print "RainbowTest"
-    wall.clear()
-
-    rainbow = [colors["red"], colors["orange"], colors["yellow"],
-               colors["green"], colors["blue"], colors["purple"]]
-    for color in rainbow:
-        for x in range(wall.width):
-            for y in range(wall.height):
-                wall.set_pixel(x, y, color)
-        wall.draw()
-        time.sleep(.5)
 
 def Checkerboards(wall):
     print "Checkerboards"
