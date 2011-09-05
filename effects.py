@@ -17,14 +17,10 @@ def SolidColorTest(wall):
     print "SolidColorTest"
     wall.clear()
 
-    hue = 1
-    saturation = 1
-    value = 1
-
-    hsv = (hue, saturation, value)
+    color = colors["blue"]
     for x in range(wall.width):
         for y in range(wall.height):
-            wall.set_pixel(x, y, hsv)
+            wall.set_pixel(x, y, color)
 
     wall.draw()
     time.sleep(2)
