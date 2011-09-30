@@ -3,7 +3,7 @@
 import optparse, sys
 
 from wall import Wall
-import effects, advanced_effects
+import effects, more_effects, advanced_effects
 
 """
 """
@@ -33,16 +33,17 @@ if __name__ == "__main__":
         effects.SolidColorTest(wall)
         effects.DictionaryTest(wall)
         effects.RainbowTest(wall)
-        effects.HueTest(wall)
-        effects.SaturationTest(wall)
-        effects.ValueTest(wall)
-        effects.Checkerboards(wall)
-        effects.Columns(wall)
-        effects.Rainbow(wall)
-        effects.Twinkle(wall)
-        effects.KnightMoves(wall)
-        effects.LetterTest(wall)
-        effects.Message(wall)
+        
+        more_effects.HueTest(wall)
+        more_effects.SaturationTest(wall)
+        more_effects.ValueTest(wall)
+        more_effects.Checkerboards(wall)
+        more_effects.Columns(wall)
+        more_effects.Rainbow(wall)
+        more_effects.Twinkle(wall)
+        more_effects.KnightMoves(wall)
+        more_effects.LetterTest(wall)
+        more_effects.Message(wall)
 
     if opts.advanced:
         print "***Advanced effects follow***"
