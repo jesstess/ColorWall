@@ -1,21 +1,10 @@
 import random
 import time
-import ascii8x8
+from effects import colors
 
 """
 advanced_effects use a class hierarchy to run on the wall.
 """
-
-# A dictionary of hsv values for some common colors.
-colors = {"black":(0, 0, 0), "white":(0, 0, 1), "gray":(0, 0, 0.5),
-          "red":(0, 1, 1), "blue":(0.66, 1, 1), "yellow":(0.16, 1, 1),
-          "purple":(0.85, 1, 0.5), "green":(0.33, 1, 0.5),
-          "orange":(0.083, 1, 1), "pink":(0.9, 1, 1), "lime":(0.33, 1, 1),
-          "baby blue":(0.66, 0.5, 1), "cyan":(0.5, 1, 1),
-          "brown":(0.07, 0.86, 0.54), "beige":(0.083, 0.32, 1),
-          "indigo":(0.75, 1, 0.5), "dark gray":(0, 0, 0.15),
-          "light gray":(0, 0, 0.75), "maroon":(0, 1, 0.5),
-          "navy":(0.66, 1, 0.25)}
 
 class Effect(object):
     def __init__(self, wall):

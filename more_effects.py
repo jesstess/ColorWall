@@ -1,6 +1,7 @@
 import ascii8x8
 import random
 import time
+from effects import colors
 
 def HueTest(wall):
     print "HueTest"
