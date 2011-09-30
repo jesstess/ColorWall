@@ -13,7 +13,6 @@ colors = {"black":(0, 0, 0), "white":(0, 0, 1), "gray":(0, 0, 0.5),
 
 def SolidColorTest(wall):
     print "SolidColorTest"
-    wall.clear()
 
     color = colors["blue"]
     for x in range(wall.width):
@@ -25,7 +24,6 @@ def SolidColorTest(wall):
 
 def DictionaryTest(wall):
     print "DictionaryTest"
-    wall.clear()
 
     for color in colors.keys():
         for x in range(wall.width):
@@ -36,4 +34,3 @@ def DictionaryTest(wall):
 
 def RainbowTest(wall):
     print "RainbowTest"
-    wall.clear()
